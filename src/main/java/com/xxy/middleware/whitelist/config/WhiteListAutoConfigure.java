@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass(WhiteListProperties.class)
 @EnableConfigurationProperties(WhiteListProperties.class)
 public class WhiteListAutoConfigure {
-    @Bean("whiteListConfig")
+    @Bean("whiteList")
     @ConditionalOnMissingBean
-    public String whiteListConfig(WhiteListProperties properties) {
-        return properties.getUsers();
+    public String[] whiteListConfig(WhiteListProperties properties) {
+        return properties.getUsers().split(",");
     }
 }
