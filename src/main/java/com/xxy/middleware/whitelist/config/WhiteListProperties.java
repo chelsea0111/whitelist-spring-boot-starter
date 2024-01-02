@@ -3,7 +3,7 @@ package com.xxy.middleware.whitelist.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties("xxy.middleware.whitelist")
+@ConfigurationProperties("c")
 public class WhiteListProperties {
     private String users;
 

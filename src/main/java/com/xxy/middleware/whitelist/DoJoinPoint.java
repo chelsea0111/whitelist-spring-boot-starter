@@ -18,12 +18,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 @Aspect
-@Component
 public class DoJoinPoint {
     private Logger logger = LoggerFactory.getLogger(DoJoinPoint.class);
 
     @Resource
-    private String[] whiteList;
+    private String whiteListConfig;
 
     /**
      * 切点
@@ -41,7 +40,8 @@ public class DoJoinPoint {
         // 根据注解传入的key,获取请求参数里对应key的值
         String value = getValueByKey(annotation.key(), pjp.getArgs());
         // 和配置的白名单进行匹配
-        for (String s : whiteList) {
+        String[] split = whiteListConfig.split(",");
+        for (String s : split) {
             if (s.equals(value)) {
                 return pjp.proceed();
             }
